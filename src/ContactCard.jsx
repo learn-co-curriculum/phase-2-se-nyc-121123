@@ -1,6 +1,6 @@
 function ContactCard({ name, number, email, address }) {
   return (
-    <div>
+    <div className="contact">
       <p>{name}</p>
       <p> {number} </p>
       <p> {email}</p>

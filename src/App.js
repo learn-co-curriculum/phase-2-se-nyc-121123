@@ -35,7 +35,17 @@ function App() {
     );
   });
 
-  return <div className="App">{renderContacts}</div>;
+  return (
+    <div className="App">
+      <button>Dark Mode</button>
+      <div className="counters">
+        <h1>0</h1>
+        <button>Decrement</button>
+        <button>Increment</button>
+      </div>
+      <div className="contacts">{renderContacts}</div>
+    </div>
+  );
 }
 
 export default App;

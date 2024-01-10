@@ -1,7 +1,13 @@
 import "./App.css";
 import ContactCard from "./ContactCard";
+import Counter from "./Counter";
+import { useState } from "react";
 
 function App() {
+  const [classname, setClassname] = useState("App");
+
+  const [hideContact, setHideContact] = useState(false);
+
   const contacts = [
     {
       name: "Mohammad",
@@ -35,15 +41,28 @@ function App() {
     );
   });
 
+  function handleClick() {
+    if (classname === "App dark") {
+      setClassname("App");
+    } else {
+      setClassname("App dark");
+    }
+  }
+
+  function handleContacts() {
+    setHideContact(!hideContact);
+  }
+
   return (
-    <div className="App">
-      <button>Dark Mode</button>
-      <div className="counters">
-        <h1>0</h1>
-        <button>Decrement</button>
-        <button>Increment</button>
-      </div>
-      <div className="contacts">{renderContacts}</div>
+    <div className={classname}>
+      <button onClick={handleClick}>
+        {classname === "App" ? "Dark mode" : "Light Mode"}
+      </button>
+      <Counter />
+      <button onClick={handleContacts}>
+        {hideContact ? "Show Contacts" : "Hide Contacts"}
+      </button>
+      {hideContact ? null : <div className="contacts">{renderContacts}</div>}
     </div>
   );
 }

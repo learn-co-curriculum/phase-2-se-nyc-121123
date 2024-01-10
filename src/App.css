@@ -9,6 +9,12 @@
     padding: 0;
 }
 
+.dark{
+    background-color: #1b1834;
+    min-height: 100vh;
+    color: #fff
+}
+
 .contacts{
     display: flex;
     flex-direction: row;

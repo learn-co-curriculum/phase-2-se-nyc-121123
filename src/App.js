@@ -1,26 +1,21 @@
 import "./App.css";
-import ContactCard from "./ContactCard";
 import Counter from "./Counter";
 import { useState } from "react";
-
 import contacts from "./contactData";
+import ContactList from "./ContactList";
+import ContactCard from "./ContactCard";
 
 function App() {
   const [classname, setClassname] = useState("App");
 
   const [hideContact, setHideContact] = useState(false);
 
-  const renderContacts = contacts.map((contact, index) => {
-    return (
-      <ContactCard
-        key={index}
-        name={contact.name}
-        number={contact.number}
-        email={contact.email}
-        address={contact.address}
-      />
-    );
-  });
+  const [newContact, setNewContact] = useState({});
+
+  function getData(data) {
+    console.log(data);
+    setNewContact(data);
+  }
 
   function handleClick() {
     if (classname === "App dark") {
@@ -47,9 +42,15 @@ function App() {
         <div className="selected">
           <h1>Selected Contact</h1>
           {/* render a contact card */}
+          <p>{newContact.name}</p>
+          <p>{newContact.number}</p>
+          <p>{newContact.email}</p>
+          <p>{newContact.address}</p>
           
         </div>
-        {hideContact ? null : <div className="contacts">{renderContacts}</div>}
+        {hideContact ? null : (
+          <ContactList getInfo={getData} contacts={contacts} />
+        )}
       </div>
     </div>
   );

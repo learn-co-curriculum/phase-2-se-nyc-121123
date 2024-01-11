@@ -3,31 +3,12 @@ import ContactCard from "./ContactCard";
 import Counter from "./Counter";
 import { useState } from "react";
 
+import contacts from "./contactData";
+
 function App() {
   const [classname, setClassname] = useState("App");
 
   const [hideContact, setHideContact] = useState(false);
-
-  const contacts = [
-    {
-      name: "Mohammad",
-      number: 123123213,
-      email: "mohammad@gmail.com",
-      address: "11 broadway",
-    },
-    {
-      name: "Aaron",
-      number: 123123213,
-      email: "Aaron@gmail.com",
-      address: "11 broadway",
-    },
-    {
-      name: "Jaeem",
-      number: 123123213,
-      email: "jaeem@gmail.com",
-      address: "11 broadway",
-    },
-  ];
 
   const renderContacts = contacts.map((contact, index) => {
     return (
@@ -58,11 +39,18 @@ function App() {
       <button onClick={handleClick}>
         {classname === "App" ? "Dark mode" : "Light Mode"}
       </button>
-      <Counter />
+      {/* <Counter /> */}
       <button onClick={handleContacts}>
         {hideContact ? "Show Contacts" : "Hide Contacts"}
       </button>
-      {hideContact ? null : <div className="contacts">{renderContacts}</div>}
+      <div className="main">
+        <div className="selected">
+          <h1>Selected Contact</h1>
+          {/* render a contact card */}
+          
+        </div>
+        {hideContact ? null : <div className="contacts">{renderContacts}</div>}
+      </div>
     </div>
   );
 }

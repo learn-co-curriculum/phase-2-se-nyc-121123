@@ -5,6 +5,7 @@ function ContactCard({ name, number, email, address }) {
       <p> {number} </p>
       <p> {email}</p>
       <p> {address}</p>
+      <button>Select</button>
     </div>
   );
 }

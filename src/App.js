@@ -4,6 +4,7 @@ import { useState } from "react";
 import contacts from "./contactData";
 import ContactList from "./ContactList";
 import ContactCard from "./ContactCard";
+import NewContact from "./NewContact";
 
 function App() {
   const [classname, setClassname] = useState("App");
@@ -46,12 +47,12 @@ function App() {
           <p>{newContact.number}</p>
           <p>{newContact.email}</p>
           <p>{newContact.address}</p>
-          
         </div>
         {hideContact ? null : (
           <ContactList getInfo={getData} contacts={contacts} />
         )}
       </div>
+      <NewContact />
     </div>
   );
 }

@@ -1,10 +1,9 @@
 import "./App.css";
-import Counter from "./Counter";
 import { useState } from "react";
-import contacts from "./contactData";
+import contactData from "./contactData";
 import ContactList from "./ContactList";
-import ContactCard from "./ContactCard";
 import NewContact from "./NewContact";
+import SelectedContact from "./SelectedContact";
 
 function App() {
   const [classname, setClassname] = useState("App");
@@ -12,6 +11,16 @@ function App() {
   const [hideContact, setHideContact] = useState(false);
 
   const [newContact, setNewContact] = useState({});
+
+  const [contacts, setContacts] = useState(contactData);
+
+  const [showForm, setShowForm] = useState(true);
+
+  function getNewContact(newContact) {
+    let newContactList = [...contacts, newContact];
+    console.log(newContactList);
+    setContacts(newContactList);
+  }
 
   function getData(data) {
     console.log(data);
@@ -30,29 +39,29 @@ function App() {
     setHideContact(!hideContact);
   }
 
+  function handleToggleForm() {
+    setShowForm(!showForm);
+  }
+
   return (
     <div className={classname}>
       <button onClick={handleClick}>
         {classname === "App" ? "Dark mode" : "Light Mode"}
       </button>
-      {/* <Counter /> */}
       <button onClick={handleContacts}>
         {hideContact ? "Show Contacts" : "Hide Contacts"}
       </button>
+
+      <button onClick={handleToggleForm}>Hide Form</button>
+      {/* rendering the contacts */}
       <div className="main">
-        <div className="selected">
-          <h1>Selected Contact</h1>
-          {/* render a contact card */}
-          <p>{newContact.name}</p>
-          <p>{newContact.number}</p>
-          <p>{newContact.email}</p>
-          <p>{newContact.address}</p>
-        </div>
+        <SelectedContact newContact={newContact} />
         {hideContact ? null : (
           <ContactList getInfo={getData} contacts={contacts} />
         )}
       </div>
-      <NewContact />
+      {/* rendering the form */}
+      {showForm ? <NewContact getNewContact={getNewContact} /> : null}
     </div>
   );
 }

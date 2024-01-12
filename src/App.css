@@ -90,10 +90,10 @@ button:hover {
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     margin-top: 20px;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.form-group {
-    margin: 15px;
 }
 
 label {
@@ -109,7 +109,7 @@ input {
     margin-bottom: 10px;
 }
 
-button {
+.submit {
     padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
@@ -118,9 +118,12 @@ button {
     border: none;
     border-radius: 25px;
     transition: background 0.3s ease, transform 0.2s ease-in-out;
+    text-align: center;
+    width: 100%;
+    margin-left: 10px;
 }
 
-button:hover {
+.submit:hover {
     background: linear-gradient(to right, #ff0844, #ffb199);
     transform: scale(1.05);
 }

@@ -13,9 +13,9 @@ function ContactCard({ name, number, email, address, getInfo }) {
   return (
     <div className="contact">
       <p>{name}</p>
-      <p> {number} </p>
+      {/* <p> {number} </p>
       <p> {email}</p>
-      <p> {address}</p>
+      <p> {address}</p> */}
       <button onClick={handleClick}>Select</button>
     </div>
   );

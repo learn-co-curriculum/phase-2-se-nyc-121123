@@ -16,7 +16,15 @@ const NewContact = ({ getNewContact }) => {
       address: address,
     };
 
-    getNewContact(newContact);
+    fetch("http://localhost:4000/contacts", {
+      method: "POST",
+      headers: {
+        "content-type": "Application/json",
+      },
+      body: JSON.stringify(newContact),
+    })
+      .then((res) => res.json())
+      .then((data) => getNewContact(data));
   }
 
   return (

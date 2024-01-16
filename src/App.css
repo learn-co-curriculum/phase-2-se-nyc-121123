@@ -68,6 +68,10 @@ button:hover {
     transform: scale(1.1);
 }
 
+#delete{
+    background: #ff5252 !important;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
     .contacts {

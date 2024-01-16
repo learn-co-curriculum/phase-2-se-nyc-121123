@@ -1,6 +1,5 @@
 import "./App.css";
-import { useState } from "react";
-import contactData from "./contactData";
+import { useState, useEffect } from "react";
 import ContactList from "./ContactList";
 import NewContact from "./NewContact";
 import SelectedContact from "./SelectedContact";
@@ -12,7 +11,7 @@ function App() {
 
   const [newContact, setNewContact] = useState({});
 
-  const [contacts, setContacts] = useState(contactData);
+  const [contacts, setContacts] = useState([]);
 
   const [showForm, setShowForm] = useState(true);
 
@@ -43,6 +42,19 @@ function App() {
     setShowForm(!showForm);
   }
 
+  function onDelete(id) {
+    console.log(id);
+
+    const filteredArray = contacts.filter((contact) => contact.id !== id);
+    setContacts(filteredArray);
+  }
+
+  useEffect(() => {
+    fetch("http://localhost:4000/contacts")
+      .then((res) => res.json())
+      .then((data) => setContacts(data));
+  }, []);
+
   return (
     <div className={classname}>
       <button onClick={handleClick}>
@@ -57,7 +69,11 @@ function App() {
       <div className="main">
         <SelectedContact newContact={newContact} />
         {hideContact ? null : (
-          <ContactList getInfo={getData} contacts={contacts} />
+          <ContactList
+            getInfo={getData}
+            contacts={contacts}
+            onDelete={onDelete}
+          />
         )}
       </div>
       {/* rendering the form */}

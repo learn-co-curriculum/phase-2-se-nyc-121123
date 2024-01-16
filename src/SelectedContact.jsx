@@ -5,10 +5,10 @@ function SelectedContact({ newContact }) {
     <div className="selected">
       <h1>Selected Contact</h1>
       {/* render a contact card */}
-      <p>{newContact.name}</p>
-      <p>{newContact.number}</p>
-      <p>{newContact.email}</p>
-      <p>{newContact.address}</p>
+      <h3>{newContact.name}</h3>
+      <h3>{newContact.number}</h3>
+      <h3>{newContact.email}</h3>
+      <h3>{newContact.address}</h3>
     </div>
   );
 }
